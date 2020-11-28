@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Appfiler"
+rootProject.name = "PayexCurrencyCalculator"
