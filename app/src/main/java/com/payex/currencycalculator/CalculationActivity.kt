@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat
 import org.jsoup.Jsoup
 import java.text.DecimalFormat
 
-class MainActivity : AppCompatActivity() {
+class CalculationActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,28 +67,11 @@ class MainActivity : AppCompatActivity() {
 
         //Function for calculations in the conversion
         fun convertionMath(currencyFrom: String, currencyTo: String, amount: Double, currencyToday: Double): Double{
-            var result = 0.0
-            if(currencyFrom.equals("NOK")){
-                //NOK to NOK
-                if(currencyTo.equals("NOK")){
-                    result = amount
-                }
-                //NOK to USD
-                else{
-                    result =  (amount/currencyToday)
-                }
+            when{
+                currencyFrom == "USD" && currencyTo =="NOK"-> return(amount*currencyToday)
+                currencyFrom == "NOK" && currencyTo =="USD"-> return(amount/currencyToday)
+                else -> return(amount) //if currenctFrom equals currencyTo
             }
-            if(currencyFrom.equals("USD")){
-                //USD to USD
-                if(currencyTo.equals("USD")){
-                    result = amount
-                }
-                //USD to NOK
-                else{
-                    result = (amount * currencyToday)
-                }
-            }
-            return result
         }
 
         //function that retrieves input values, calls conversion method and updates results
