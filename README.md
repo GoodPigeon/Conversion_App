@@ -1,11 +1,14 @@
 Krav
 
 Appen er basert på de følgene kravene: 
+
 - Applikasjonen skal kunne hente nåværende kurs i form av XML fra Norges Bank sitt åpne API. (ved bruk av jsoup)
 - I applikasjonen skal man ha mulighet til å regne om en gitt input i norske kroner til amerikanske dollar (NOK-USD) eller en gitt input i Amerikanske dollar til Norske kroner (USD-NOK).
 - Appen skal ta utgangspunkt i biblioteker definert i tilsendt skjelett.
 - Kodespråk brukt er hovedsakling Kotlin og XML, men også Java
+
 Programvarekrav:
+
 - Appen er skrevet i Android Studio, så det vil være et optimalt verktøy for å kjøre koden
 - Appen skal kunne også kjøre på API som ble definert i skjelettet. (API 24 - API30)
 - All kode, kommentering og tekst er skrevet på Engelsk
