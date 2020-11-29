@@ -1,9 +1,9 @@
 package com.payex.currencycalculator
 
-class Test {
+class TestClass {
     //tests conversion function (only ran if value of runTests == true)
     fun runTestFunction() : String{
-        val convMath = ConversionMath ()
+        val convMath = ConversionMathClass ()
 
         //checks conversionMath function with different params
         val test1 = convMath.convert("NOK", "USD", 100.0, 10.0)

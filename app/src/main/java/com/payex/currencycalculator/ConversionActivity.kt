@@ -16,10 +16,10 @@ class ConversionActivity : AppCompatActivity() {
         /*
         VALUES AND CLASS INSTANCES
         */
-        val connection = Internet()
-        val database = Database()
-        val test = Test()
-        val conversionMath = ConversionMath()
+        val connection = InternetClass()
+        val database = DatabaseClass()
+        val test = TestClass()
+        val conversionMath = ConversionMathClass()
         val runTests = true //if true, calls function for running tests on functions
 
         /*
@@ -71,7 +71,7 @@ class ConversionActivity : AppCompatActivity() {
 
         if(runTests){
             val testResults = test.runTestFunction()
-            Log.d("Test", testResults)
+            Log.d("TestClass", testResults)
             Toast.makeText(this, testResults, Toast.LENGTH_LONG).show()
         }
     }

@@ -2,7 +2,7 @@ package com.payex.currencycalculator
 import android.util.Log
 import org.jsoup.Jsoup
 
-class Database() {
+class DatabaseClass() {
     val databaseURL = "https://data.norges-bank.no/api/data/EXR/B.USD.NOK.SP?format=sdmx-generic-2.1&amp;lastNObservations=1&amp;locale=en"
     var currencyToday = 0.0 //will be automatically updated by database
     var date = "" //will be automatically updated by database
@@ -24,11 +24,11 @@ class Database() {
 
             // is ok for conversion
             readyToConvert = true
-            Log.d("Database", "Successful connection")
+            Log.d("DatabaseClass", "Successful connection")
 
 
         } catch (e: Exception) {
-            Log.d("Database", "Something went wrong: $e")
+            Log.d("DatabaseClass", "Something went wrong: $e")
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.payex.currencycalculator
 
-class ConversionMath {
+class ConversionMathClass {
 
     //Function for calculations in the conversion
     fun convert(currencyFrom: String, currencyTo: String, amount: Double, currencyToday: Double): Double{

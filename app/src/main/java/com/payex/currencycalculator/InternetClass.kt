@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
 
-class Internet {
+class InternetClass {
 
     //Function for checking whether internet connection persists
     fun isOnline(context: Context): Boolean {
@@ -16,18 +16,18 @@ class Internet {
                 connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             if (capabilities != null) {
                 if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                    Log.i("InternetClass", "NetworkCapabilities.TRANSPORT_CELLULAR")
                     return true
                 } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                    Log.i("InternetClass", "NetworkCapabilities.TRANSPORT_WIFI")
                     return true
                 } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                    Log.i("InternetClass", "NetworkCapabilities.TRANSPORT_ETHERNET")
                     return true
                 }
             }
         }
-        Log.i("Internet", "no connection to Internet")
+        Log.i("InternetClass", "no connection to InternetClass")
         return false
     }
 }

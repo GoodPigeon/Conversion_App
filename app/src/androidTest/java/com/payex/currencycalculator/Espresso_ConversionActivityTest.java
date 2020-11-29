@@ -23,7 +23,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressImeActionButton;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
@@ -35,13 +34,13 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ConversionActivityTest {
+public class Espresso_ConversionActivityTest {
 
     @Rule
     public ActivityTestRule<ConversionActivity> mActivityTestRule = new ActivityTestRule<>(ConversionActivity.class);
 
     @Test
-    public void calculationActivityTest() {
+    public void espresso_ConversionActivityTest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.numberInput),
                         childAtPosition(
@@ -50,17 +49,7 @@ public class ConversionActivityTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("100.5"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.numberInput), withText("100.5"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText2.perform(pressImeActionButton());
+        appCompatEditText.perform(replaceText("15.5"), closeSoftKeyboard());
 
         pressBack();
 
@@ -90,6 +79,50 @@ public class ConversionActivityTest {
                                 2),
                         isDisplayed()));
         appCompatButton.perform(click());
+
+        ViewInteraction appCompatSpinner2 = onView(
+                allOf(withId(R.id.currencyFrom),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatSpinner2.perform(click());
+
+        DataInteraction appCompatTextView2 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(0);
+        appCompatTextView2.perform(click());
+
+        ViewInteraction appCompatSpinner3 = onView(
+                allOf(withId(R.id.currencyTo),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatSpinner3.perform(click());
+
+        DataInteraction appCompatTextView3 = onData(anything())
+                .inAdapterView(childAtPosition(
+                        withClassName(is("android.widget.PopupWindow$PopupBackgroundView")),
+                        0))
+                .atPosition(1);
+        appCompatTextView3.perform(click());
+
+        ViewInteraction appCompatButton2 = onView(
+                allOf(withId(R.id.convertButton), withText("Convert"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
