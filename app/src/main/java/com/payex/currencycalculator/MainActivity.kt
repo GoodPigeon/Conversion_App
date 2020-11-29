@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         VALUES
         */
         val databaseURL = "https://data.norges-bank.no/api/data/EXR/B.USD.NOK.SP?format=sdmx-generic-2.1&amp;lastNObservations=1&amp;locale=en"
-        var currencyToday = 0.0//is automatically updated by database
+        var currencyToday = 0.0 //will be automatically updated by database
+        var date = ""//will be automatically updated by database
 
         /*
         DESIGN ELEMENTS
@@ -97,26 +98,34 @@ class MainActivity : AppCompatActivity() {
             if(inputEl.text.toString()==""){
                 inputEl.setText("0")
             }
-            val inputInt = inputEl.text.toString().toDouble()
+            val inputDouble = inputEl.text.toString().toDouble()
             val resultInt = convertionMath(
                 currencyFromString,
                 currencyToString,
-                inputInt,
+                inputDouble,
                 currencyToday
             )
 
             val df = DecimalFormat("#.#")
-            df.maximumFractionDigits = 10
-            resultsEl.setText(df.format(resultInt).toString())
+            df.maximumFractionDigits = 4
+            resultsEl.setText(df.format(inputDouble).toString()  + " " + currencyFromString + " equals " + df.format(resultInt).toString() + " "+ currencyToString + ", on the date " + date)
         }
 
         //Thread that connects to database
         val connectionThread = Thread {
             try {
                 val doc = Jsoup.connect(databaseURL).get()
-                val content = doc.getElementsByTag("generic:ObsValue")
-                val retrievedCurrency = content.last().attr("value")
+                //retrieves currency
+                val currencyContent = doc.getElementsByTag("generic:ObsValue")
+                val retrievedCurrency = currencyContent.last().attr("value")
                 currencyToday = retrievedCurrency.toDouble()
+
+                //retrieves date of last update to database
+                val dateContent = doc.getElementsByTag("generic:ObsDimension")
+                val retrievedDate = dateContent.last().attr("value")
+                date = retrievedDate
+
+
             } catch (e: Exception) {
                 Log.d("TEST1", "Something went wrong: $e")
             }
@@ -131,7 +140,6 @@ class MainActivity : AppCompatActivity() {
             connectionThread.start()
             Log.d("TEST1", currencyToday.toString())
             convertButtonEl.isEnabled = true
-            convertButtonEl.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimaryDark))
         }
         else {
             Toast.makeText(this, "Try connecting to the internet", Toast.LENGTH_LONG).show()
