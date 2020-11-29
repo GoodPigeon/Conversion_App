@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PayexCurrencyCalculator</string>
+    <string name="description">Type amount and choose currencies to convert</string>
+    <string-array name="currency_arrays">
+        <item>NOK</item>
+        <item>USD</item>
+    </string-array>
 </resources>
