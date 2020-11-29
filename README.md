@@ -44,3 +44,7 @@ Appen vil ved suksessful kjøring vise en aktivitet med diverse elementer
 - De to neste er nedtrekksmenyer (spinnere) der man velger fra- og til-valutta (NOK eller USD).
 - Under der igjen vil det være en stor grønn knapp med teksten "CONVERT". Ved trykk på denne vil informasjonen over benyttes til å regne ut riktig konverteringsresultat
 - Riktig konvertering er representert i feltet nederst, under teksten "Result".
+
+
+
+Appp og dokumentasjon er laget av Patrik Gillebo Olsen
