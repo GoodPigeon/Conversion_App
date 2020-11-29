@@ -47,4 +47,4 @@ Appen vil ved suksessful kjøring vise en aktivitet med diverse elementer
 
 
 
-Appp og dokumentasjon er laget av Patrik Gillebo Olsen
+App og dokumentasjon er laget av Patrik Gillebo Olsen
