@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Payex Currency Calculator</string>
+    <string name="app_name">Currency Calculator</string>
     <string name="description">Type amount and choose currencies to convert</string>
     <string name="resultString"> %1$s  %2$s equals  %3$s %4$s, on the date %5$s </string>
     <string-array name="currency_arrays">
